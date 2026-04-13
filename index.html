@@ -541,6 +541,44 @@ footer{
 .sk,.pc,.pc-featured,.stat,.ct-a,.btn-p,.btn-o{will-change:transform}
 .sk::before{will-change:left}
 
+/* ── LIGHTBOX ── */
+#lightbox{
+  position:fixed;inset:0;z-index:20000;
+  background:rgba(5,8,15,.92);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+}
+#lightbox.open{opacity:1;pointer-events:all;}
+#lightbox img{
+  max-width:88vw;max-height:88vh;
+  border-radius:8px;
+  border:1px solid rgba(200,216,232,.15);
+  box-shadow:0 40px 100px rgba(0,0,0,.8);
+  transform:scale(.92);
+  transition:transform .4s cubic-bezier(.23,1,.32,1);
+}
+#lightbox.open img{transform:scale(1);}
+#lightbox-close{
+  position:absolute;top:1.5rem;right:1.8rem;
+  font-size:1.6rem;color:var(--mist);
+  cursor:pointer;background:none;border:none;
+  transition:color .2s,transform .2s;
+  line-height:1;
+}
+#lightbox-close:hover{color:var(--snow);transform:scale(1.15);}
+.img-clickable{cursor:zoom-in;}
+.pc-featured-mtn .zoom-hint{
+  position:absolute;bottom:.7rem;right:.8rem;
+  z-index:3;font-size:.7rem;letter-spacing:.1em;
+  color:rgba(238,243,248,.7);background:rgba(5,8,15,.55);
+  padding:.2rem .55rem;border-radius:3px;
+  backdrop-filter:blur(4px);
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.pc-featured:hover .zoom-hint{opacity:1;}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:1.1rem 1.8rem}
@@ -572,6 +610,12 @@ footer{
   </svg>
 </div>
 <canvas id="ctrail"></canvas>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <!-- BACKGROUND layers -->
 <canvas id="bg"></canvas>
@@ -646,7 +690,10 @@ footer{
     <!-- GAMEVAULT — FEATURED -->
     <div class="pc-featured reveal">
       <div class="pc-featured-inner">
-        <div class="pc-featured-mtn"><img src="gamevault-preview.png" alt="GameVault — Share & Download Game Files"></div>
+        <div class="pc-featured-mtn img-clickable" onclick="openLightbox('gamevault-preview.png','GameVault — Share & Download Game Files')">
+          <img src="gamevault-preview.png" alt="GameVault — Share & Download Game Files">
+          <span class="zoom-hint">🔍 Click to expand</span>
+        </div>
         <div class="pc-featured-body">
           <div class="pc-featured-badge">Latest Project</div>
           <div class="pc-num">00 — Full-Stack · Community Platform</div>
@@ -818,6 +865,27 @@ footer{
 <footer>Designed & built by Niship Sigdel — 2025 &nbsp;·&nbsp; Always climbing, always building ⛰</footer>
 
 <script>
+/* ══════════════════════════════════════
+   LIGHTBOX
+══════════════════════════════════════ */
+function openLightbox(src, alt){
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lightbox-img');
+  img.src=src; img.alt=alt;
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+// close on backdrop click
+document.getElementById('lightbox').addEventListener('click',function(e){
+  if(e.target===this) closeLightbox();
+});
+// close on Escape key
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(); });
+
 /* ══════════════════════════════════════
    CONTACT FORM — Formspree submission
 ══════════════════════════════════════ */
