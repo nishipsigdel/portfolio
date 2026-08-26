@@ -420,6 +420,41 @@ section{
 .btn-send:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .cf-msg{font-size:.8rem;min-height:1.1rem;margin-top:.3rem;text-align:left;transition:color .3s}
 
+/* ── RESUME ── */
+#resume{background:rgba(14,20,36,.6);backdrop-filter:blur(18px)}
+.resume-wrap{max-width:1100px;display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:stretch}
+.resume-preview-card,.resume-info{
+  border:1px solid rgba(200,216,232,.1);border-radius:7px;
+  background:rgba(11,17,30,.82);backdrop-filter:blur(14px);
+  overflow:hidden;position:relative;
+}
+.resume-preview-card::before,.resume-info::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);z-index:2;
+}
+.resume-preview-link{display:block;cursor:zoom-in;background:#fff;position:relative;overflow:hidden}
+.resume-preview-link img{display:block;width:100%;height:auto;max-height:720px;object-fit:contain;object-position:top center;transition:transform .6s cubic-bezier(.23,1,.32,1)}
+.resume-preview-link:hover img{transform:scale(1.015)}
+.resume-preview-overlay{position:absolute;left:1rem;right:1rem;bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.65rem .8rem;border:1px solid rgba(255,255,255,.14);border-radius:4px;background:rgba(5,8,15,.72);backdrop-filter:blur(10px);opacity:0;transform:translateY(8px);transition:all .3s ease;color:var(--snow);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+.resume-preview-link:hover .resume-preview-overlay{opacity:1;transform:translateY(0)}
+.resume-preview-label{padding:1rem 1.2rem;border-top:1px solid rgba(200,216,232,.08);font-size:.68rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.resume-info{padding:2rem}
+.resume-kicker{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem}
+.resume-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--snow);margin-bottom:.7rem}
+.resume-desc{font-size:.82rem;color:var(--fog);line-height:1.85;font-weight:300;margin-bottom:1.4rem}
+.resume-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.resume-btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.72rem 1.15rem;border-radius:4px;text-decoration:none;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;transition:all .3s ease}
+.resume-btn.primary{color:var(--snow);background:rgba(200,216,232,.1);border:1px solid rgba(200,216,232,.25)}
+.resume-btn.secondary{color:var(--mist);background:transparent;border:1px solid rgba(200,216,232,.12)}
+.resume-btn:hover{transform:translateY(-3px);border-color:var(--peak);color:var(--snow);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.resume-list{display:grid;gap:.75rem}
+.resume-item{display:flex;align-items:flex-start;gap:.75rem;padding:.8rem 0;border-bottom:1px solid rgba(200,216,232,.07)}
+.resume-item:last-child{border-bottom:0}
+.resume-icon{font-size:1rem;width:24px;flex-shrink:0}
+.resume-item strong{display:block;font-size:.72rem;color:var(--snow);font-weight:500;margin-bottom:.15rem}
+.resume-item span{font-size:.68rem;color:var(--dim);line-height:1.6}
+@media(max-width:900px){.resume-wrap{grid-template-columns:1fr}.resume-preview-link img{max-height:none}.resume-preview-overlay{opacity:1;transform:none}}
+
 /* ── DOWNLOAD ── */
 #download{background:transparent}
 #download .s-label{justify-content:center}
@@ -578,6 +613,7 @@ footer{
   opacity:0;transition:opacity .3s;pointer-events:none;
 }
 .pc-featured:hover .zoom-hint{opacity:1;}
+.pc-mtn:hover .zoom-hint{opacity:1!important;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
@@ -630,6 +666,7 @@ footer{
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#gmail">Gmail</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -687,81 +724,98 @@ footer{
   <h2 class="s-title reveal">Selected Projects</h2>
   <div class="proj-grid">
 
-    <!-- GAMEVAULT — FEATURED -->
+    <!-- AI / RAG — FEATURED -->
     <div class="pc-featured reveal">
       <div class="pc-featured-inner">
-        <div class="pc-featured-mtn img-clickable" onclick="openLightbox('gamevault-preview.png','GameVault — Share & Download Game Files')">
-          <img src="gamevault-preview.png" alt="GameVault — Share & Download Game Files">
+        <div class="pc-featured-mtn img-clickable" onclick="openLightbox('project_screenshot.png','AI PDF Reader & Finance RAG Assistant')">
+          <img src="project_screenshot.png" alt="AI PDF Reader & Finance RAG Assistant project screenshot">
           <span class="zoom-hint">🔍 Click to expand</span>
         </div>
         <div class="pc-featured-body">
-          <div class="pc-featured-badge">Latest Project</div>
-          <div class="pc-num">00 — Full-Stack · Community Platform</div>
-          <div class="pc-title"><span class="game-accent">GameVault</span></div>
-          <p class="pc-desc">A centralized hub for the gaming community to share and discover game assets, mods, maps, saves, patches via external links. Lightweight, fast, and community-driven with user auth, global search, ratings & comments.</p>
+          <div class="pc-featured-badge">Latest AI Project</div>
+          <div class="pc-num">00 — RAG · Local AI · Finance</div>
+          <div class="pc-title"><span class="game-accent">AI PDF Reader & Finance RAG Assistant</span></div>
+          <p class="pc-desc">An integrated local AI platform that combines document question-answering with autonomous financial news analysis. Users can work with PDF documents through RAG while the finance pipeline collects, processes and retrieves financial news for AI-powered analysis.</p>
           <div class="tags">
-            <span class="tag">React</span><span class="tag">Vite</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">Cloudinary</span><span class="tag">Railway</span><span class="tag">Vercel</span>
+            <span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Llama 3.1</span><span class="tag">Ollama</span><span class="tag">ChromaDB</span><span class="tag">FAISS</span><span class="tag">Streamlit</span><span class="tag">Hugging Face</span>
           </div>
           <div class="pc-feat-stats">
-            <div class="pc-feat-stat"><strong>Frontend</strong>React + Vite</div>
-            <div class="pc-feat-stat"><strong>Backend</strong>Node.js & Express</div>
-            <div class="pc-feat-stat"><strong>Database</strong>PostgreSQL</div>
-            <div class="pc-feat-stat"><strong>Media</strong>Cloudinary</div>
+            <div class="pc-feat-stat"><strong>AI</strong>Local LLMs</div>
+            <div class="pc-feat-stat"><strong>Retrieval</strong>RAG + Vector Search</div>
+            <div class="pc-feat-stat"><strong>Documents</strong>PDF Q&amp;A</div>
+            <div class="pc-feat-stat"><strong>Finance</strong>News Analysis</div>
           </div>
           <div class="pc-links" style="margin-top:1.2rem">
-            <a href="https://sharegames.vercel.app" target="_blank" class="pc-link-live">Live Site</a>
-            <a href="https://github.com/nishipsigdel/gamevault-frontend" target="_blank" class="pc-link">Frontend Repo →</a>
-            <a href="https://github.com/nishipsigdel/gamevault-backend" target="_blank" class="pc-link">Backend Repo →</a>
+            <a href="https://github.com/nishipsigdel" target="_blank" rel="noopener noreferrer" class="pc-link">GitHub Profile →</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PROJECT 01 -->
+    <!-- GAMEVAULT -->
     <div class="pc reveal">
-      <div class="pc-mtn"><canvas id="pm1"></canvas></div>
+      <div class="pc-mtn img-clickable" onclick="openLightbox('gamevault-preview.png','GameVault — Share & Download Game Files')" style="height:220px">
+        <img src="gamevault-preview.png" alt="GameVault — Share & Download Game Files" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center">
+        <span class="zoom-hint" style="opacity:0">🔍 Click to expand</span>
+      </div>
       <div class="pc-body">
-        <div class="pc-num">01 — AI · Undergraduate Project</div>
-        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Job Screening System</div>
-        <div class="pc-desc">AI-powered job screening app with a candidate ranking ML model trained on Google Colab, plus a React + Vite recruiter interface.</div>
-        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Colab</span></div>
-        <a href="https://github.com/nishipsigdel/JOB-SCREENING-UI---2" target="_blank" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
+        <div class="pc-num">01 — Full-Stack · Community Platform</div>
+        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">GameVault</div>
+        <div class="pc-desc">A centralized hub for the gaming community to share and discover game assets, mods, maps, saves and patches through external links, with authentication, search, ratings and comments.</div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">Cloudinary</span></div>
+        <div class="pc-links" style="margin-top:.9rem">
+          <a href="https://sharegames.vercel.app" target="_blank" rel="noopener noreferrer" class="pc-link-live">Live Site</a>
+          <a href="https://github.com/nishipsigdel/gamevault-frontend" target="_blank" rel="noopener noreferrer" class="pc-link">Frontend →</a>
+          <a href="https://github.com/nishipsigdel/gamevault-backend" target="_blank" rel="noopener noreferrer" class="pc-link">Backend →</a>
+        </div>
       </div>
     </div>
 
     <!-- PROJECT 02 -->
     <div class="pc reveal">
-      <div class="pc-mtn"><canvas id="pm2"></canvas></div>
+      <div class="pc-mtn"><canvas id="pm1"></canvas></div>
       <div class="pc-body">
-        <div class="pc-num">02 — E-Commerce</div>
-        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Furniture E-Commerce Website</div>
-        <div class="pc-desc">A fully designed furniture e-commerce site with product listings and a modern shopping experience.</div>
-        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-        <a href="https://github.com/nishipsigdel/Furniture-E-commerceWebsite" target="_blank" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
+        <div class="pc-num">02 — AI · Undergraduate Project</div>
+        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Job Screening System</div>
+        <div class="pc-desc">AI-powered job screening app with a candidate ranking ML model trained on Google Colab, plus a React + Vite recruiter interface.</div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Colab</span></div>
+        <a href="https://github.com/nishipsigdel/JOB-SCREENING-UI---2" target="_blank" rel="noopener noreferrer" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
       </div>
     </div>
 
     <!-- PROJECT 03 -->
     <div class="pc reveal">
-      <div class="pc-mtn"><canvas id="pm3"></canvas></div>
+      <div class="pc-mtn"><canvas id="pm2"></canvas></div>
       <div class="pc-body">
-        <div class="pc-num">03 — Clone Project</div>
-        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Amazon Clone</div>
-        <div class="pc-desc">A pixel-perfect Amazon frontend clone replicating navigation, product cards and the full shopping UI.</div>
+        <div class="pc-num">03 — E-Commerce</div>
+        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Furniture E-Commerce Website</div>
+        <div class="pc-desc">A fully designed furniture e-commerce site with product listings and a modern shopping experience.</div>
         <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-        <a href="https://github.com/nishipsigdel/AmazonClone" target="_blank" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
+        <a href="https://github.com/nishipsigdel/Furniture-E-commerceWebsite" target="_blank" rel="noopener noreferrer" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
       </div>
     </div>
 
     <!-- PROJECT 04 -->
     <div class="pc reveal">
+      <div class="pc-mtn"><canvas id="pm3"></canvas></div>
+      <div class="pc-body">
+        <div class="pc-num">04 — Clone Project</div>
+        <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Amazon Clone</div>
+        <div class="pc-desc">A pixel-perfect Amazon frontend clone replicating navigation, product cards and the full shopping UI.</div>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+        <a href="https://github.com/nishipsigdel/AmazonClone" target="_blank" rel="noopener noreferrer" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">View on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 05 -->
+    <div class="pc reveal">
       <div class="pc-mtn"><canvas id="pm4"></canvas></div>
       <div class="pc-body">
-        <div class="pc-num">04 — More on GitHub</div>
+        <div class="pc-num">05 — More on GitHub</div>
         <div class="pc-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--snow);margin-bottom:.5rem">Always Building…</div>
         <div class="pc-desc">Constantly experimenting with new ideas and technologies. More projects live on my GitHub profile.</div>
         <div class="tags"><span class="tag">React</span><span class="tag">Python</span><span class="tag">AI/ML</span><span class="tag">Next.js</span></div>
-        <a href="https://github.com/nishipsigdel" target="_blank" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">See All Projects →</a>
+        <a href="https://github.com/nishipsigdel" target="_blank" rel="noopener noreferrer" class="pc-link" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;color:var(--accent);text-decoration:none;font-weight:500;letter-spacing:.05em;transition:color .3s,gap .3s;margin-top:.9rem">See All Projects →</a>
       </div>
     </div>
 
@@ -803,6 +857,36 @@ footer{
       </div>
       <div class="cf-msg" id="cfStatus"></div>
     </form>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="s-label reveal">My professional profile</div>
+  <h2 class="s-title reveal">Resume</h2>
+  <div class="resume-wrap">
+    <div class="resume-preview-card reveal">
+      <a href="niship_cv.pdf" target="_blank" rel="noopener noreferrer" class="resume-preview-link" aria-label="Open full resume PDF">
+        <img src="resume_screenshot.png" alt="Niship Sigdel resume first page">
+        <span class="resume-preview-overlay"><span>View full resume</span><span>↗</span></span>
+      </a>
+      <div class="resume-preview-label">First page preview · Click the page to open the complete PDF</div>
+    </div>
+    <div class="resume-info reveal">
+      <div class="resume-kicker">Niship Sigdel · CV</div>
+      <div class="resume-title">Developer &amp; AI Enthusiast</div>
+      <p class="resume-desc">My latest resume covers my education, technical skills, research interests, projects and professional experience. The preview on the left lets you see the first page without opening the PDF.</p>
+      <div class="resume-actions">
+        <a href="niship_cv.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn primary">View Full Resume ↗</a>
+        <a href="niship_cv.pdf" download class="resume-btn secondary">Download PDF ↓</a>
+      </div>
+      <div class="resume-kicker">What you'll find</div>
+      <div class="resume-list">
+        <div class="resume-item"><div class="resume-icon">🤖</div><div><strong>AI / Machine Learning</strong><span>RAG systems, NLP, machine learning and local LLM applications.</span></div></div>
+        <div class="resume-item"><div class="resume-icon">💻</div><div><strong>Software Development</strong><span>Full-stack applications, frontend development and backend systems.</span></div></div>
+        <div class="resume-item"><div class="resume-icon">📊</div><div><strong>Data &amp; Analytics</strong><span>Data analysis, databases and practical AI-driven solutions.</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -965,7 +1049,7 @@ function burstSparks(){
 document.addEventListener('mousemove',e=>{document.body.style.cursor='none';updatePointer(e.clientX,e.clientY);},{passive:true});
 document.addEventListener('mousedown',()=>{document.body.classList.add('is-clicking');burstSparks();});
 document.addEventListener('mouseup',()=>document.body.classList.remove('is-clicking'));
-document.querySelectorAll('a, button, .sk, .pc, .pc-featured, .stat, .profile-card, .dl-btn, .btn-p, .btn-o, .ct-a').forEach(el=>{
+document.querySelectorAll('a, button, .sk, .pc, .pc-featured, .stat, .profile-card, .resume-preview-card, .resume-info, .dl-btn, .btn-p, .btn-o, .ct-a').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('is-hovering'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('is-hovering'));
 });
@@ -1155,8 +1239,8 @@ function rrect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r
 /* ══════════════════════════════════════
    SCROLL REVEAL
 ══════════════════════════════════════ */
-document.querySelectorAll('.skills-grid, .proj-grid, .stats, .ct-links').forEach(grid=>{
-  grid.querySelectorAll('.sk,.pc,.pc-featured,.stat,.ct-a').forEach((child,i)=>{child.style.transitionDelay=`${i*95}ms`;});
+document.querySelectorAll('.skills-grid, .proj-grid, .stats, .ct-links, .resume-wrap').forEach(grid=>{
+  grid.querySelectorAll('.sk,.pc,.pc-featured,.stat,.ct-a,.resume-preview-card,.resume-info').forEach((child,i)=>{child.style.transitionDelay=`${i*95}ms`;});
 });
 const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revObs.unobserve(e.target);}});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
